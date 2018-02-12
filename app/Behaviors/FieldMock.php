@@ -4,7 +4,7 @@ namespace VictorHugoBatista\AcfJsonField\Behaviors;
 
 use VictorHugoBatista\AcfJsonField\Contracts\FieldBehavior;
 
-class FieldTest implements FieldBehavior
+class FieldMock implements FieldBehavior
 {
     private $fields = [];
 

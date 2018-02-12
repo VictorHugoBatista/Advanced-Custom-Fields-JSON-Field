@@ -1,7 +1,7 @@
 <?php
 
 use VictorHugoBatista\AcfJsonField\JsonField;
-use VictorHugoBatista\AcfJsonField\Behaviors\FieldTest;
+use VictorHugoBatista\AcfJsonField\Behaviors\FieldMock;
 
 class JsonFieldTest extends \PHPUnit\Framework\TestCase
 {
@@ -10,8 +10,8 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(true, class_exists(JsonField::class));
     }
 
-    public function testClassFieldTestExists()
+    public function testClassFieldMockExists()
     {
-        $this->assertEquals(true, class_exists(FieldTest::class));
+        $this->assertEquals(true, class_exists(FieldMock::class));
     }
 }
