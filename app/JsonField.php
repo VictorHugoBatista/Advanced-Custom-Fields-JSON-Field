@@ -2,13 +2,13 @@
 
 namespace VictorHugoBatista\AcfJsonField;
 
-use VictorHugoBatista\AcfJsonField\Contracts\Field;
+use VictorHugoBatista\AcfJsonField\Contracts\FieldBehavior;
 
 class JsonField
 {
     private $fieldBehavior;
 
-    public function __construct(Field $fieldBehavior)
+    public function __construct(FieldBehavior $fieldBehavior)
     {
         $this->fieldBehavior = $fieldBehavior;
     }

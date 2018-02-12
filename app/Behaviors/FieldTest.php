@@ -2,9 +2,9 @@
 
 namespace VictorHugoBatista\AcfJsonField\Behaviors;
 
-use VictorHugoBatista\AcfJsonField\Contracts\Field;
+use VictorHugoBatista\AcfJsonField\Contracts\FieldBehavior;
 
-class FieldTest implements Field
+class FieldTest implements FieldBehavior
 {
     public function getField($fieldName, $postId = '')
     {

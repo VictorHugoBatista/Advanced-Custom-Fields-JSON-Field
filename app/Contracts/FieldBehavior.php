@@ -2,7 +2,7 @@
 
 namespace VictorHugoBatista\AcfJsonField\Contracts;
 
-interface Field
+interface FieldBehavior
 {
     public function getField($fieldName, $postId = '');
 }
