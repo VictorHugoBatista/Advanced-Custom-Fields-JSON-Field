@@ -27,8 +27,30 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(true, class_exists(FieldMock::class));
     }
 
-    public function testJsonFieldGetsContent()
+    /**
+     * @dataProvider providerFieldNames
+     */
+    public function testJsonFieldGetsContent($fieldName, $itemsCount)
     {
-        $this->assertEquals([], $this->jsonField->getField('empty_field'));
+        $content = $this->jsonField->getField($fieldName);
+        $this->assertTrue(is_array($content));
+    }
+
+    /**
+     * @dataProvider providerFieldNames
+     */
+    public function testJsonFieldContentNumber($fieldName, $itemsCount)
+    {
+        $content = $this->jsonField->getField($fieldName);
+        $this->assertEquals($itemsCount, count($content));
+    }
+
+    public function providerFieldNames()
+    {
+        return [
+            ['empty_field', 0],
+            ['one_level_field', 2],
+            ['two_levels_field', 3],
+        ];
     }
 }
