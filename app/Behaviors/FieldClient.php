@@ -2,7 +2,12 @@
 
 namespace VictorHugoBatista\AcfJsonField\Behaviors;
 
-class FieldClient
-{
+use VictorHugoBatista\AcfJsonField\Contracts\Field;
 
+class FieldClient implements Field
+{
+    public function getField($fieldName, $postId = '')
+    {
+        // TODO: Implement getField() method.
+    }
 }
