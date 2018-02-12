@@ -8,6 +8,13 @@ class FieldClient implements FieldBehavior
 {
     public function getField($fieldName, $postId = '')
     {
-        // TODO: Implement getField() method.
+        if (! function_exists('get_field')) {
+            return '';
+        }
+        $content = get_field($fieldName, $postId);
+        if (! $content) {
+            return '';
+        }
+        return $content;
     }
 }
