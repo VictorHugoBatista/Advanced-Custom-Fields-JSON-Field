@@ -1,0 +1,11 @@
+{
+    "name": "victorhugobatista/acf-json-field",
+    "description": "Repetidor de campos flexível que gera apenas um postmeta serializado em JSON",
+    "authors": [
+        {
+            "name": "Victor Hugo",
+            "email": "vct.bta@gmail.com"
+        }
+    ],
+    "require": {}
+}
