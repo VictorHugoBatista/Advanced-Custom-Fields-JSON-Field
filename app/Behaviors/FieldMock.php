@@ -16,7 +16,7 @@ class FieldMock implements FieldBehavior
     public function getField($fieldName, $postId = '')
     {
         if (! array_key_exists($fieldName, $this->fields)) {
-            return false;
+            return [];
         }
         return $this->fields[$fieldName];
     }
