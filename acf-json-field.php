@@ -3,7 +3,7 @@
 /*
 Plugin Name: Advanced Custom Fields: JSON Field
 Description: Repetidor de campos flexível que gera apenas um postmeta serializado em JSON.
-Version: 1.0.0
+Version: 0.1.0
 Author: Victor Hugo Batista
 Author URI: https://github.com/VictorHugoBatista
 License: GPLv2 or later
