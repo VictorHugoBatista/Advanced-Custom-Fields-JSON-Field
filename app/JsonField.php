@@ -15,6 +15,7 @@ class JsonField
 
     public function getField($fieldName, $postId = '')
     {
-        return $this->fieldBehavior->getField($fieldName, $postId);
+        $content = $this->fieldBehavior->getField($fieldName, $postId);
+        return '' !== $content ? $content : [];
     }
 }
