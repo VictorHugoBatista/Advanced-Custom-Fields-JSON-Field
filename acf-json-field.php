@@ -13,6 +13,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 // exit if accessed directly
 if( ! defined( 'ABSPATH' ) ) exit;
 
+require_once 'vendor/autoload.php';
 
 // check if class already exists
 if( !class_exists('victorhugobatista_acf_plugin_json_field') ) :
