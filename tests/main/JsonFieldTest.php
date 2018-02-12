@@ -5,8 +5,15 @@ use VictorHugoBatista\AcfJsonField\Behaviors\FieldMock;
 
 class JsonFieldTest extends \PHPUnit\Framework\TestCase
 {
+    /**
+     * Implementação de JsonField com mock.
+     * @var VictorHugoBatista\AcfJsonField\JsonField
+     */
     private $jsonField;
 
+    /**
+     * Inicializa o objeto $this->jsonField mockado.
+     */
     public function setUp()
     {
         parent::setUp();
@@ -17,26 +24,34 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
         ]));
     }
 
+    /**
+     * Testa a existência da classe JsonField.
+     */
     public function testClassJsonFieldExists()
     {
         $this->assertEquals(true, class_exists(JsonField::class));
     }
 
+    /**
+     * Testa a existência da classe FieldMock.
+     */
     public function testClassFieldMockExists()
     {
         $this->assertEquals(true, class_exists(FieldMock::class));
     }
 
     /**
+     * Testa se o método JsonField::getField retorna apenas arrays.
      * @dataProvider providerFieldNames
      */
-    public function testJsonFieldGetsContent($fieldName, $itemsCount)
+    public function testJsonFieldGetsContent($fieldName, $_)
     {
         $content = $this->jsonField->getField($fieldName);
         $this->assertTrue(is_array($content));
     }
 
     /**
+     * Testa se o método JsonField::getField retorna os dados corretamente.
      * @dataProvider providerFieldNames
      */
     public function testJsonFieldContentNumber($fieldName, $itemsCount)
@@ -45,6 +60,10 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($itemsCount, count($content));
     }
 
+    /**
+     * Adiciona os nomes dos campos à serem checkados (e o número de subcampos).
+     * @return array
+     */
     public function providerFieldNames()
     {
         return [
