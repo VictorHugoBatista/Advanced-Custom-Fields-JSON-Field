@@ -3,7 +3,7 @@
 /*
 Plugin Name: Advanced Custom Fields: JSON Field
 Description: Repetidor de campos flexível que gera apenas um postmeta serializado em JSON.
-Version: 1.0.0
+Version: 0.1.0
 Author: Victor Hugo Batista
 Author URI: https://github.com/VictorHugoBatista
 License: GPLv2 or later
@@ -13,6 +13,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 // exit if accessed directly
 if( ! defined( 'ABSPATH' ) ) exit;
 
+require_once 'vendor/autoload.php';
 
 // check if class already exists
 if( !class_exists('victorhugobatista_acf_plugin_json_field') ) :
