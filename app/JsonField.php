@@ -2,6 +2,7 @@
 
 namespace VictorHugoBatista\AcfJsonField;
 
+use VictorHugoBatista\AcfJsonField\Behaviors\FieldClient;
 use VictorHugoBatista\AcfJsonField\Contracts\FieldBehavior;
 
 /**
@@ -17,12 +18,19 @@ class JsonField
     private $fieldBehavior;
 
     /**
+     * Compoetamento padrão do método $this->getField.
+     * @var string
+     */
+    private $fieldBehaviorDefault = FieldClient::class;
+
+    /**
      * JsonField constructor.
      * @param FieldBehavior $fieldBehavior Comportamento do método $this->getField.
      */
-    public function __construct(FieldBehavior $fieldBehavior)
+    public function __construct(FieldBehavior $fieldBehavior = null)
     {
-        $this->fieldBehavior = $fieldBehavior;
+        $this->fieldBehavior =
+            $fieldBehavior instanceof FieldBehavior ? $fieldBehavior : new $this->fieldBehaviorDefault;
     }
 
     /**
