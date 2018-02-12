@@ -48,6 +48,7 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
     public function providerFieldNames()
     {
         return [
+            ['non_existent_field', 0],
             ['empty_field', 0],
             ['one_level_field', 2],
             ['two_levels_field', 3],
