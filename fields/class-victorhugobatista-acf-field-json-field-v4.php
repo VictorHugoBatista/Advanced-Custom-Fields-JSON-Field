@@ -154,13 +154,8 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 		
 		
 		// register & include JS
-		wp_register_script('acf-json-field', "{$url}assets/js/input.js", array('acf-input'), $version);
+		wp_register_script('acf-json-field', "{$url}dist/build.js", array('acf-input'), $version);
 		wp_enqueue_script('acf-json-field');
-		
-		
-		// register & include CSS
-		wp_register_style('acf-json-field', "{$url}assets/css/input.css", array('acf-input'), $version);
-		wp_enqueue_style('acf-json-field');
 		
 	}
 	
