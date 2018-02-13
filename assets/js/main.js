@@ -1,5 +1,8 @@
 import {initializeJsonField} from './acf-field-initializer';
+import Vue from 'vue';
 
 initializeJsonField($field => {
-    console.log('teste');
+    new Vue({
+        el: '#' + $field.attr('id'),
+    });
 });
