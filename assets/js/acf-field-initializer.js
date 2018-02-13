@@ -9,8 +9,8 @@ export const initializeJsonField = initializeFieldCallback => {
         acf.add_action('append_field/type=json_field', initializeFieldCallback);
     } else { // ACF 4
         $(document).on('acf/setup_fields', (e, postbox) => {
-            $(postbox).find('.field[data-field_type="json_field"]').each(function(){
-                initializeFieldCallback($(this));
+            $(postbox).find('.field[data-field_type="json_field"]').each((_, field) => {
+                initializeFieldCallback($(field));
             });
         });
     }
