@@ -1,5 +1,5 @@
 import {initializeJsonField} from './acf-field-initializer';
 
-initializeJsonField(function($field) {
+initializeJsonField($field => {
     console.log('teste');
 });
