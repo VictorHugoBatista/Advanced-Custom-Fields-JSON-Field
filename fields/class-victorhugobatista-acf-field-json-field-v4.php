@@ -124,8 +124,8 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 		
 		// create Field HTML
 		?>
-		<div>
-			
+		<div id="<?php echo $field['key'] ?>" class="json-field-wrapper">
+
 		</div>
 		<?php
 	}
