@@ -1,6 +1,6 @@
 <template>
     <div>
-        field
+        <input type="hidden" :name="field_name" :value="field_value" />
     </div>
 </template>
 
