@@ -1,10 +1,10 @@
 <template>
     <div>
-        <input type="hidden" :name="field_name" :value="JSON.stringify(field_data)" />
+        <input type="hidden" :name="field_name" v-model="JSON.stringify(field_data)" />
         <ul>
             <li v-for="value, key in field_data">
-                <input type="text" :value="key" />
-                <input type="text" :value="value" />
+                <input type="text" v-model="key" />
+                <input type="text" v-model="field_data[key]" />
             </li>
         </ul>
     </div>
