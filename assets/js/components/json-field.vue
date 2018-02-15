@@ -6,7 +6,11 @@
 
 <script>
     export default {
-        name: "json-field"
+        name: "json-field",
+        props: [
+            'field_name',
+            'field_value',
+        ],
     }
 </script>
 
