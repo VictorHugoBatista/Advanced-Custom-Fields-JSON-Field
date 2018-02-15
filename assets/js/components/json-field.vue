@@ -1,6 +1,12 @@
 <template>
     <div>
         <input type="hidden" :name="field_name" :value="JSON.stringify(field_data)" />
+        <ul>
+            <li v-for="value, key in field_data">
+                <input type="text" :value="key" />
+                <input type="text" :value="value" />
+            </li>
+        </ul>
     </div>
 </template>
 
