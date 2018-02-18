@@ -5,6 +5,7 @@
             <li v-for="field, key in field_data">
                 <input type="text" v-model="field.title" required />
                 <input type="text" v-model="field.value" required />
+                <input type="button" value="Remover" v-on:click="deleteField(key)" />
             </li>
         </ul>
     </div>
@@ -29,6 +30,11 @@
             } catch(e) {
                 this.field_data = {};
             }
+        },
+        methods: {
+            deleteField(key) {
+                this.field_data.splice(key, 1);
+            },
         },
     }
 </script>
