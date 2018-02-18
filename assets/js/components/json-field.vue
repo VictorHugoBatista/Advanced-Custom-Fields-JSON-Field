@@ -3,9 +3,9 @@
         <input type="hidden" :name="field_name" v-model="JSON.stringify(field_data)" />
         <ul class="json-field-repeater">
             <li class="json-field-repeater-item" v-for="field, key in field_data">
-                <input type="text" v-model="field.title" required />
-                <input type="text" v-model="field.value" required />
-                <input type="button" value="Remover" v-on:click="deleteField(key)" />
+                <input class="json-field-repeater-item-field" type="text" v-model="field.title" required />
+                <input class="json-field-repeater-item-field" type="text" v-model="field.value" />
+                <input class="json-field-repeater-item-button" type="button" value="Remover" v-on:click="deleteField(key)" />
             </li>
             <input type="button" value="Adicionar campo" v-on:click="addField" />
         </ul>
@@ -53,7 +53,20 @@
     .json-field-repeater-item {
         background-color: rgba(0, 0, 0, .3);
         border-radius: 4px;
+        clear: both;
         margin-bottom: 7px;
+        overflow: auto;
         padding: 7px;
+    }
+
+    .json-field-repeater-item-field,
+    .json-field-repeater-item-button {
+        display: inline-block;
+        float: left;
+    }
+
+    .json-field-repeater-item-field {
+        margin-right: 7px !important;
+        width: calc(45% - 7px) !important;
     }
 </style>
