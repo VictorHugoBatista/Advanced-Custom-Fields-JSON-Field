@@ -44,24 +44,31 @@
 </script>
 
 <style scoped>
+    .json-field-repeater,
+    .json-field-repeater-item,
+    .json-field-repeater-item-field,
+    .json-field-repeater-item-button {
+        border-radius: 4px;
+    }
+
+    .json-field-repeater,
+    .json-field-repeater-item {
+        padding: 7px;
+    }
+
     .json-field-repeater {
         background-color: rgba(0, 0, 0, .2);
-        border-radius: 4px;
-        padding: 7px;
     }
 
     .json-field-repeater-item {
         background-color: rgba(0, 0, 0, .3);
-        border-radius: 4px;
         clear: both;
         margin-bottom: 7px;
         overflow: auto;
-        padding: 7px;
     }
 
     .json-field-repeater-item-field,
     .json-field-repeater-item-button {
-        border-radius: 4px;
         display: inline-block;
         float: left;
         padding: 6px;
