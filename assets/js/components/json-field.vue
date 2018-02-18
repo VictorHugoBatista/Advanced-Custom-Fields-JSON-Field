@@ -1,8 +1,8 @@
 <template>
     <div>
         <input type="hidden" :name="field_name" v-model="JSON.stringify(field_data)" />
-        <ul>
-            <li v-for="field, key in field_data">
+        <ul class="json-field-repeater">
+            <li class="json-field-repeater-item" v-for="field, key in field_data">
                 <input type="text" v-model="field.title" required />
                 <input type="text" v-model="field.value" required />
                 <input type="button" value="Remover" v-on:click="deleteField(key)" />
@@ -44,5 +44,16 @@
 </script>
 
 <style scoped>
+    .json-field-repeater {
+        background-color: rgba(0, 0, 0, .2);
+        border-radius: 4px;
+        padding: 7px;
+    }
 
+    .json-field-repeater-item {
+        background-color: rgba(0, 0, 0, .3);
+        border-radius: 4px;
+        margin-bottom: 7px;
+        padding: 7px;
+    }
 </style>
