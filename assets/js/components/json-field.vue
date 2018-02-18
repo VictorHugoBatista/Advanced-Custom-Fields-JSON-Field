@@ -56,10 +56,6 @@
         padding: 7px;
     }
 
-    .json-field-repeater {
-        background-color: rgba(0, 0, 0, .2);
-    }
-
     .json-field-repeater-item {
         background-color: rgba(0, 0, 0, .3);
         clear: both;
