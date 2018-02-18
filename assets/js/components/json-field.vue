@@ -5,9 +5,9 @@
             <li class="json-field-repeater-item" v-for="field, key in field_data">
                 <input class="json-field-repeater-item-field" type="text" v-model="field.title" required />
                 <input class="json-field-repeater-item-field" type="text" v-model="field.value" />
-                <input class="json-field-repeater-item-button" type="button" value="Remover" v-on:click="deleteField(key)" />
+                <input class="json-field-repeater-item-button json-field-button" type="button" value="Remover" v-on:click="deleteField(key)" />
             </li>
-            <input type="button" value="Adicionar campo" v-on:click="addField" />
+            <input class="json-field-button" type="button" value="Adicionar campo" v-on:click="addField" />
         </ul>
     </div>
 </template>
@@ -47,7 +47,7 @@
     .json-field-repeater,
     .json-field-repeater-item,
     .json-field-repeater-item-field,
-    .json-field-repeater-item-button {
+    .json-field-button {
         border-radius: 4px;
     }
 
@@ -71,14 +71,26 @@
     .json-field-repeater-item-button {
         display: inline-block;
         float: left;
-        padding: 6px;
+    }
+
+    .json-field-repeater-item-field,
+    .json-field-button {
+        font-weight: 500;
+        letter-spacing: .04em;
     }
 
     .json-field-repeater-item-field {
-        border: 1px solid black;
-        font-weight: 500;
+        border: 1px solid #2295cc;
         margin-right: 7px !important;
         padding: 6px 10px !important;
         width: calc(45% - 7px) !important;
+    }
+
+    .json-field-button {
+        background-color: #2295cc;
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+        padding: 7px;
     }
 </style>
