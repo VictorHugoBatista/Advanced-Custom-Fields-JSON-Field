@@ -7,6 +7,7 @@
                 <input type="text" v-model="field.value" required />
                 <input type="button" value="Remover" v-on:click="deleteField(key)" />
             </li>
+            <input type="button" value="Adicionar campo" v-on:click="addField" />
         </ul>
     </div>
 </template>
@@ -32,6 +33,9 @@
             }
         },
         methods: {
+            addField() {
+                this.field_data.push({'title': '', 'value': ''});
+            },
             deleteField(key) {
                 this.field_data.splice(key, 1);
             },
