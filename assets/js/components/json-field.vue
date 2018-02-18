@@ -61,12 +61,17 @@
 
     .json-field-repeater-item-field,
     .json-field-repeater-item-button {
+        border-radius: 4px;
         display: inline-block;
         float: left;
+        padding: 6px;
     }
 
     .json-field-repeater-item-field {
+        border: 1px solid black;
+        font-weight: 500;
         margin-right: 7px !important;
+        padding: 6px 10px !important;
         width: calc(45% - 7px) !important;
     }
 </style>
