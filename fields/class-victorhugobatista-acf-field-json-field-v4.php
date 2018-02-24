@@ -76,7 +76,8 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 
 		// key is needed in the field names to correctly save the data
 		$key = $field['name'];
-		
+		$subfields = (array_key_exists('subfields', $field) && '' !== $field['subfields'])
+            ? $field['subfields'] : '[]';
 		
 		// Create Field Options HTML
 		?>
@@ -88,7 +89,7 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 	<td>
         <json-field
                 field_name="<?php echo esc_attr("fields[$key][subfields]") ?>"
-                field_value="<?php echo esc_attr($field['subfields']) ?>">
+                field_value="<?php echo esc_attr($subfields) ?>">
         </json-field>
 	</td>
 </tr>
