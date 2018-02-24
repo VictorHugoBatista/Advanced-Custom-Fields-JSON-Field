@@ -3,19 +3,22 @@
         <input type="hidden" :name="field_name" v-model="JSON.stringify(field_data)" />
         <ul class="json-field-repeater">
             <li class="json-field-repeater-item" v-for="field, key in field_data">
-                <input type="text" required
-                   class="json-field-repeater-item-field"
-                   placeholder="Título do campo"
-                   v-model="field.title"
-                />
-                <input type="text"
-                    class="json-field-repeater-item-field"
-                    v-model="field.value"
-                />
-                <input type="button" value="Remover"
-                    class="json-field-repeater-item-button json-field-button"
-                    v-on:click="deleteField(key)"
-                />
+                <div class="json-field-repeater-item-form-group" v-for="subfield in structure">
+                    <div class="json-field-repeater-item-label">
+                        {{ subfield.label }}
+                    </div>
+                    <input type="text" required
+                           class="json-field-repeater-item-field"
+                           placeholder="Label do campo"
+                           v-model="field.label"
+                    />
+                </div>
+                <div class="json-field-repeater-item-form-group">
+                    <input type="button" value="Remover"
+                        class="json-field-repeater-item-button json-field-button"
+                        v-on:click="deleteField(key)"
+                    />
+                </div>
             </li>
             <input class="json-field-button" type="button" value="Adicionar campo" v-on:click="addField" />
         </ul>
@@ -32,15 +35,17 @@
         ],
         data() {
             return {
-                field_data: {},
+                structure: [],
+                field_data: [],
             };
         },
         mounted() {
             try {
-                const value = JSON.parse(this.field_value);
-                this.field_data = value;
+                this.structure = JSON.parse(this.field_structure);
+                this.field_data = JSON.parse(this.field_value);
             } catch(e) {
-                this.field_data = {};
+                this.structure = [];
+                this.field_data = [];
             }
         },
         methods: {
