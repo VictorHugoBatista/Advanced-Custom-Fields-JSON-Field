@@ -28,6 +28,7 @@
         props: [
             'field_name',
             'field_value',
+            'field_structure',
         ],
         data() {
             return {
