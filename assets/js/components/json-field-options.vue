@@ -3,26 +3,32 @@
         <input type="hidden" :name="field_name" v-model="JSON.stringify(field_data)" />
         <ul class="json-field-repeater">
             <li class="json-field-repeater-item" v-for="field, key in field_data">
-                <label>
-                    Label do campo
+                <div class="json-field-repeater-item-form-group">
+                    <div class="json-field-repeater-item-label">
+                        Label do campo
+                    </div>
                     <input type="text" required
                            class="json-field-repeater-item-field"
                            placeholder="Label do campo"
                            v-model="field.label"
                     />
-                </label>
-                <label>
-                    Slug do campo
+                </div>
+                <div class="json-field-repeater-item-form-group">
+                    <div class="json-field-repeater-item-label">
+                        Slug do campo
+                    </div>
                     <input type="text" required
                            class="json-field-repeater-item-field"
                            placeholder="Slug do campo"
                            v-model="field.slug"
                     />
-                </label>
-                <input type="button" value="Remover"
-                       class="json-field-repeater-item-button json-field-button"
-                       v-on:click="deleteField(key)"
-                />
+                </div>
+                <div class="json-field-repeater-item-form-group">
+                    <input type="button" value="Remover"
+                           class="json-field-repeater-item-button json-field-button"
+                           v-on:click="deleteField(key)"
+                    />
+                </div>
             </li>
             <input class="json-field-button" type="button" value="Adicionar campo" v-on:click="addField" />
         </ul>
@@ -70,33 +76,47 @@
 
     .json-field-repeater,
     .json-field-repeater-item {
-        padding: 7px;
+        padding: 10px;
     }
 
     .json-field-repeater-item {
         background-color: rgba(0, 0, 0, .3);
         clear: both;
-        margin-bottom: 7px;
+        margin-bottom: 10px;
         overflow: auto;
     }
 
-    .json-field-repeater-item-field,
-    .json-field-repeater-item-button {
-        display: inline-block;
-        float: left;
+    .json-field-repeater-item-form-group {
+        margin-bottom: 10px;
+        overflow: auto;
     }
 
+    .json-field-repeater-item-form-group:last-child {
+        margin-bottom: 0;
+    }
+
+    .json-field-repeater-item-label,
+    .json-field-repeater-item-field {
+        display: inline-block;
+        float: left;
+        margin: 0;
+    }
+
+    .json-field-repeater-item-label,
     .json-field-repeater-item-field,
     .json-field-button {
         font-weight: 500;
         letter-spacing: .04em;
     }
 
+    .json-field-repeater-item-label {
+        width: 30%;
+    }
+
     .json-field-repeater-item-field {
         border: 1px solid #2295cc;
-        margin-right: 7px !important;
         padding: 6px 10px !important;
-        width: calc(45% - 7px) !important;
+        width: 70% !important;
     }
 
     .json-field-button {
@@ -104,6 +124,7 @@
         border: 0;
         color: #fff;
         cursor: pointer;
+        float: right;
         padding: 7px;
     }
 </style>
