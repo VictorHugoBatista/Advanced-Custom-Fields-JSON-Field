@@ -1,11 +1,15 @@
 export default class AdminJsonFieldInitializer {
+    /**
+     * Inicializa a classe armazenando a instância do jQuery executando na administração.
+     * @param $
+     */
     constructor($) {
         this.$ = $;
     }
 
     /**
-     * Chama a função passada por parâmetro ao carregar
-     * um campo do tipo acf_field na administração.
+     * Chama a função passada por parâmetro ao carregar um campo
+     * do tipo acf_field na tela de eedição de post na administração.
      * @param initializeFieldCallback
      */
     initializeJsonField(initializeFieldCallback) {
@@ -21,6 +25,10 @@ export default class AdminJsonFieldInitializer {
         }
     }
 
+    /**
+     * Chama a função passada por parâmetro ao carregar as opções de um campo json-field.
+     * @param initializeFieldCallback
+     */
     initializeJsonFieldOptions(initializeFieldCallback) {
         if( typeof acf.add_action !== 'undefined' ) { // ACF 5
             console.log('acf-5');
