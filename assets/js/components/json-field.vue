@@ -60,42 +60,56 @@
 </script>
 
 <style scoped>
-    .json-field-repeater,
+    .json-field-repeater-options,
     .json-field-repeater-item,
     .json-field-repeater-item-field,
     .json-field-button {
         border-radius: 4px;
     }
 
-    .json-field-repeater,
+    .json-field-repeater-options,
     .json-field-repeater-item {
-        padding: 7px;
+        padding: 10px;
     }
 
     .json-field-repeater-item {
         background-color: rgba(0, 0, 0, .3);
         clear: both;
-        margin-bottom: 7px;
+        margin-bottom: 10px;
         overflow: auto;
     }
 
-    .json-field-repeater-item-field,
-    .json-field-repeater-item-button {
-        display: inline-block;
-        float: left;
+    .json-field-repeater-item-form-group {
+        margin-bottom: 10px;
+        overflow: auto;
     }
 
+    .json-field-repeater-item-form-group:last-child {
+        margin-bottom: 0;
+    }
+
+    .json-field-repeater-item-label,
+    .json-field-repeater-item-field {
+        display: inline-block;
+        float: left;
+        margin: 0;
+    }
+
+    .json-field-repeater-item-label,
     .json-field-repeater-item-field,
     .json-field-button {
         font-weight: 500;
         letter-spacing: .04em;
     }
 
+    .json-field-repeater-item-label {
+        width: 30%;
+    }
+
     .json-field-repeater-item-field {
         border: 1px solid #2295cc;
-        margin-right: 7px !important;
         padding: 6px 10px !important;
-        width: calc(45% - 7px) !important;
+        width: 70% !important;
     }
 
     .json-field-button {
@@ -103,6 +117,7 @@
         border: 0;
         color: #fff;
         cursor: pointer;
+        float: right;
         padding: 7px;
     }
 </style>
