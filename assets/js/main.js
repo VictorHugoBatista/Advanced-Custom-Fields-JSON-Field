@@ -1,21 +1,23 @@
-import {initializeJsonField} from './acf-field-initializer';
+import AdminJsonFieldInitializer from './acf-field-initializer';
 import Vue from 'vue';
 import JsonField from './components/json-field.vue';
 
 Vue.component('json-field', JsonField);
 
-($ => {
-    initializeJsonField($field => {
-        new Vue({
-            el: '#' + $field.find('.json-field-wrapper').attr('id'),
-        });
-    }, $);
+let initializer = new AdminJsonFieldInitializer(jQuery);
 
-    $(document).on('acf/field_form-open', () => {
-        if ($('.field-json-option').length) {
-            new Vue({
-                el: '.field-json-option',
-            });
-        }
+initializer.initializeJsonField($field => {
+    new Vue({
+        el: '#' + $field.find('.json-field-wrapper').attr('id'),
     });
-})(jQuery);
+});
+
+// ($ => {
+//     $(document).on('acf/field_form-open', () => {
+//         if ($('.field-json-option').length) {
+//             new Vue({
+//                 el: '.field-json-option',
+//             });
+//         }
+//     });
+// })(jQuery);
