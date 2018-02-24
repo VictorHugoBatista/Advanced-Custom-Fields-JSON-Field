@@ -66,33 +66,30 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 		/*
 		$field = array_merge($this->defaults, $field);
 		*/
-		
+
+        // vars
+        $url = $this->settings['url'];
+        $version = $this->settings['version'];
+        // register & include JS
+        wp_register_script('acf-json-field', "{$url}dist/build.js", array(), $version);
+        wp_enqueue_script('acf-json-field');
+
 		// key is needed in the field names to correctly save the data
 		$key = $field['name'];
 		
 		
 		// Create Field Options HTML
 		?>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
+<tr class="field-json-option field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
-		<label><?php _e("Preview Size",'acf-json-field'); ?></label>
-		<p class="description"><?php _e("Thumbnail is advised",'acf-json-field'); ?></p>
+		<label>Subcampos</label>
+		<p class="description">Estrutura do repeater</p>
 	</td>
 	<td>
-		<?php
-		
-		do_action('acf/create_field', array(
-			'type'		=>	'radio',
-			'name'		=>	'fields['.$key.'][preview_size]',
-			'value'		=>	$field['preview_size'],
-			'layout'	=>	'horizontal',
-			'choices'	=>	array(
-				'thumbnail' => __('Thumbnail', 'acf-json-field'),
-				'something_else' => __('Something Else', 'acf-json-field'),
-			)
-		));
-		
-		?>
+        <json-field
+                field_name="<?php echo esc_attr("fields[$key][subfields]") ?>"
+                field_value="<?php echo esc_attr($field['subfields']) ?>">
+        </json-field>
 	</td>
 </tr>
 		<?php
