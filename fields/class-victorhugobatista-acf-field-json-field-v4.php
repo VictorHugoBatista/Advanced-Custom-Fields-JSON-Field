@@ -87,10 +87,10 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 		<p class="description">Estrutura do repeater</p>
 	</td>
 	<td>
-        <json-field
+        <json-field-options
                 field_name="<?php echo esc_attr("fields[$key][subfields]") ?>"
                 field_value="<?php echo esc_attr($subfields) ?>">
-        </json-field>
+        </json-field-options>
 	</td>
 </tr>
 		<?php
