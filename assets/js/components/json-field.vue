@@ -9,7 +9,6 @@
                     </div>
                     <input type="text" required
                            class="json-field-repeater-item-field"
-                           placeholder="Label do campo"
                            v-model="field.label"
                     />
                 </div>
@@ -35,6 +34,7 @@
         ],
         data() {
             return {
+                new_line: [],
                 structure: [],
                 field_data: [],
             };
@@ -43,6 +43,12 @@
             try {
                 this.structure = JSON.parse(this.field_structure);
                 this.field_data = JSON.parse(this.field_value);
+                for (const key in this.structure) {
+                    this.new_line.push({
+                        'title': this.structure[key].slug,
+                        'value': '',
+                    });
+                }
             } catch(e) {
                 this.structure = [];
                 this.field_data = [];
@@ -50,7 +56,7 @@
         },
         methods: {
             addField() {
-                this.field_data.push({'title': '', 'value': ''});
+                this.field_data.push(this.new_line);
             },
             deleteField(key) {
                 this.field_data.splice(key, 1);
