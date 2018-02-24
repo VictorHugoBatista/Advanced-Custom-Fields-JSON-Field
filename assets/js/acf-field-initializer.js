@@ -33,9 +33,9 @@ export default class AdminJsonFieldInitializer {
         if( typeof acf.add_action !== 'undefined' ) { // ACF 5
             console.log('acf-5');
         } else { // ACF 4
-            this.$(document).on('acf/field_form-open', () => {
-                if (this.$('.field-json-option').length) {
-                    initializeFieldCallback();
+            this.$(document).on('acf/field_form-open', (_, $optionField) => {
+                if ($optionField.is('.field_type-json_field')) {
+                    initializeFieldCallback($optionField);
                 }
             });
         }

@@ -9,6 +9,6 @@ let initializer = new AdminJsonFieldInitializer(jQuery);
 initializer.initializeJsonField($field => {
     new Vue({el: '#' + $field.find('.json-field-wrapper').attr('id')});
 });
-initializer.initializeJsonFieldOptions(() => {
-    new Vue({el: '.field-json-option'});
+initializer.initializeJsonFieldOptions($field => {
+    new Vue({el: '[data-id="' + $field.attr('data-id') + '"]'});
 });
