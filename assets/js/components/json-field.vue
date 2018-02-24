@@ -5,11 +5,11 @@
             <li class="json-field-repeater-item" v-for="field, key in field_data">
                 <div class="json-field-repeater-item-form-group" v-for="subfield in structure">
                     <div class="json-field-repeater-item-label">
-                        {{ subfield.label }}
+                        {{ subfield.label }} ({{ subfield.slug }})
                     </div>
                     <input type="text" required
                            class="json-field-repeater-item-field"
-                           v-model="field.label"
+                           v-model="field[subfield.slug]"
                     />
                 </div>
                 <div class="json-field-repeater-item-form-group">
@@ -34,7 +34,7 @@
         ],
         data() {
             return {
-                new_line: [],
+                new_line: {},
                 structure: [],
                 field_data: [],
             };
@@ -44,10 +44,7 @@
                 this.structure = JSON.parse(this.field_structure);
                 this.field_data = JSON.parse(this.field_value);
                 for (const key in this.structure) {
-                    this.new_line.push({
-                        'title': this.structure[key].slug,
-                        'value': '',
-                    });
+                    this.new_line[this.structure[key].slug] = '';
                 }
             } catch(e) {
                 this.structure = [];
