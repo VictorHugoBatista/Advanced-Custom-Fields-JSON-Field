@@ -7,9 +7,10 @@
                     <div class="json-field-repeater-item-label">
                         {{ subfield.label }} ({{ subfield.slug }})
                     </div>
-                    <input type="text" required
+                    <input type="text"
                            class="json-field-repeater-item-field"
-                           v-model="field[subfield.slug]"
+                           :value="field[subfield.slug]"
+                           v-on:input="updateFieldValue(key, subfield.slug, $event.target.value)"
                     />
                 </div>
                 <div class="json-field-repeater-item-form-group">
@@ -53,7 +54,16 @@
         },
         methods: {
             addField() {
-                this.field_data.push(this.new_line);
+                this.field_data.push({});
+                const field_data_new_index = this.field_data.length - 1;
+                for (const attr in this.new_line) {
+                    this.field_data[field_data_new_index][attr] = this.new_line[attr];
+                }
+            },
+            updateFieldValue(key, slug, value) {
+                this.field_data[key][slug] = value;
+                this.$set(this.field_data, key, this.field_data[key]);
+                this.$set(this.field_data[key], slug, this.field_data[key][slug]);
             },
             deleteField(key) {
                 this.field_data.splice(key, 1);
