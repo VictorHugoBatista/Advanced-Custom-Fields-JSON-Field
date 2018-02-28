@@ -1,31 +1,31 @@
 <template>
     <div>
         <input type="hidden" :name="field_name" v-model="JSON.stringify(field_data)" />
-        <ul class="json-field-repeater-options">
-            <li class="json-field-repeater-options-item" v-for="field, key in field_data">
-                <div class="json-field-repeater-options-item-form-group">
-                    <div class="json-field-repeater-options-item-label">
+        <ul class="json-field-repeater">
+            <li class="json-field-repeater-item" v-for="field, key in field_data">
+                <div class="json-field-repeater-item-form-group">
+                    <div class="json-field-repeater-item-label">
                         Label do campo
                     </div>
                     <input type="text" required
-                           class="json-field-repeater-options-item-field"
+                           class="json-field-repeater-item-field"
                            placeholder="Label do campo"
                            v-model="field.label"
                     />
                 </div>
-                <div class="json-field-repeater-options-item-form-group">
-                    <div class="json-field-repeater-options-item-label">
+                <div class="json-field-repeater-item-form-group">
+                    <div class="json-field-repeater-item-label">
                         Slug do campo
                     </div>
                     <input type="text" required
-                           class="json-field-repeater-options-item-field"
+                           class="json-field-repeater-item-field"
                            placeholder="Slug do campo"
                            v-model="field.slug"
                     />
                 </div>
-                <div class="json-field-repeater-options-item-form-group">
+                <div class="json-field-repeater-item-form-group">
                     <input type="button" value="Remover"
-                           class="json-field-repeater-options-item-button json-field-button"
+                           class="json-field-repeater-item-button json-field-button"
                            v-on:click="deleteField(key)"
                     />
                 </div>
@@ -49,8 +49,7 @@
         },
         mounted() {
             try {
-                const value = JSON.parse(this.field_value);
-                this.field_data = value;
+                this.field_data = JSON.parse(this.field_value);
             } catch(e) {
                 this.field_data = {};
             }
@@ -67,53 +66,53 @@
 </script>
 
 <style scoped>
-    .json-field-repeater-options,
-    .json-field-repeater-options-item,
-    .json-field-repeater-options-item-field,
+    .json-field-repeater,
+    .json-field-repeater-item,
+    .json-field-repeater-item-field,
     .json-field-button {
         border-radius: 4px;
     }
 
-    .json-field-repeater-options,
-    .json-field-repeater-options-item {
+    .json-field-repeater,
+    .json-field-repeater-item {
         padding: 10px;
     }
 
-    .json-field-repeater-options-item {
+    .json-field-repeater-item {
         background-color: rgba(0, 0, 0, .3);
         clear: both;
         margin-bottom: 10px;
         overflow: auto;
     }
 
-    .json-field-repeater-options-item-form-group {
+    .json-field-repeater-item-form-group {
         margin-bottom: 10px;
         overflow: auto;
     }
 
-    .json-field-repeater-options-item-form-group:last-child {
+    .json-field-repeater-item-form-group:last-child {
         margin-bottom: 0;
     }
 
-    .json-field-repeater-options-item-label,
-    .json-field-repeater-options-item-field {
+    .json-field-repeater-item-label,
+    .json-field-repeater-item-field {
         display: inline-block;
         float: left;
         margin: 0;
     }
 
-    .json-field-repeater-options-item-label,
-    .json-field-repeater-options-item-field,
+    .json-field-repeater-item-label,
+    .json-field-repeater-item-field,
     .json-field-button {
         font-weight: 500;
         letter-spacing: .04em;
     }
 
-    .json-field-repeater-options-item-label {
+    .json-field-repeater-item-label {
         width: 30%;
     }
 
-    .json-field-repeater-options-item-field {
+    .json-field-repeater-item-field {
         border: 1px solid #2295cc;
         padding: 6px 10px !important;
         width: 70% !important;
