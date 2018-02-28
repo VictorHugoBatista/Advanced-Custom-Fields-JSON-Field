@@ -19,8 +19,9 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
         parent::setUp();
         $this->jsonField = new JsonField(new FieldMock([
             'empty_field' => '',
-            'one_level_field' => '{"test1":"Elgg zanga mzinga ning","test2":"zimbra ebay wesabe spotify, skype"}',
-            'two_levels_field' => '{"test1":"Cotweet ning","test2":"nuvvo reddit twones lala","test4":{"subteste1":"elgg mog hojoki","subteste2":""}} ',
+            'empty_field_2' => '[]',
+            'acf_value_field' => '[{"test-1":"test 1"},{"test-1":"test 2"},{"test-1":"test 3"}]',
+            'acf_option_field' => '[{"label":"test 1","slug":"test-1"},{"label":"test 2","slug":"test-2"}]',
         ]));
     }
 
@@ -42,7 +43,7 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Testa se o método JsonField::getField retorna apenas arrays.
-     * @dataProvider providerFieldNames
+     * @dataProvider providerFieldValues
      */
     public function testJsonFieldGetsContent($fieldName, $_)
     {
@@ -52,25 +53,54 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Testa se o método JsonField::getField retorna os dados corretamente.
-     * @dataProvider providerFieldNames
+     * @dataProvider providerFieldValues
      */
-    public function testJsonFieldContentNumber($fieldName, $itemsCount)
+    public function testJsonFieldContentNumber($fieldName, $values)
     {
         $content = $this->jsonField->getField($fieldName);
-        $this->assertEquals($itemsCount, count($content));
+        $this->assertEquals(count($values), count($content));
     }
 
     /**
-     * Adiciona os nomes dos campos à serem checkados (e o número de subcampos).
-     * @return array
+     * Testa o método JsonField::getField retorna o array corretamente.
+     * @dataProvider providerFieldValues
      */
-    public function providerFieldNames()
+    public function testJsonFieldValues($fieldName, $values)
+    {
+        $content = $this->jsonField->getField($fieldName);
+        $this->assertEquals($values, $content);
+    }
+
+    /*
+     * Valores esperados nos testes dos campos mockados.
+     */
+    public function providerFieldValues()
     {
         return [
-            ['non_existent_field', 0],
-            ['empty_field', 0],
-            ['one_level_field', 2],
-            ['two_levels_field', 3],
+            ['non_existent_field', []],
+            ['empty_field', []],
+            ['empty_field_2', []],
+            [
+                'acf_value_field',
+                [
+                    ['test-1' => 'test 1'],
+                    ['test-1' => 'test 2'],
+                    ['test-1' => 'test 3'],
+                ],
+            ],
+            [
+                'acf_option_field',
+                [
+                    [
+                        'label' => 'test 1',
+                        'slug' => 'test-1',
+                    ],
+                    [
+                        'label' => 'test 2',
+                        'slug' => 'test-2',
+                    ],
+                ],
+            ],
         ];
     }
 }

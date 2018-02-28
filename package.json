@@ -1,0 +1,32 @@
+{
+  "name": "acf-json-field",
+  "description": "Repetidor de campos flexível que gera apenas um postmeta serializado em JSON",
+  "version": "0.1.1",
+  "author": "Victor Hugo Batista",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorHugoBatista/Advanced-Custom-Fields-JSON-Field.git"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "vue": "^2.5.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.9",
+    "file-loader": "^1.1.6",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}

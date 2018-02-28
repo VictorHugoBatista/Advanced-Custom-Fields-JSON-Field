@@ -66,33 +66,31 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 		/*
 		$field = array_merge($this->defaults, $field);
 		*/
-		
+
+        // vars
+        $url = $this->settings['url'];
+        $version = $this->settings['version'];
+        // register & include JS
+        wp_register_script('acf-json-field', "{$url}dist/build.js", array(), $version);
+        wp_enqueue_script('acf-json-field');
+
 		// key is needed in the field names to correctly save the data
 		$key = $field['name'];
-		
+		$subfields = (array_key_exists('subfields', $field) && '' !== $field['subfields'])
+            ? $field['subfields'] : '[]';
 		
 		// Create Field Options HTML
 		?>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
+<tr class="field-json-option field_option field_option_<?php echo $this->name; ?>">
 	<td class="label">
-		<label><?php _e("Preview Size",'acf-json-field'); ?></label>
-		<p class="description"><?php _e("Thumbnail is advised",'acf-json-field'); ?></p>
+		<label>Subcampos</label>
+		<p class="description">Estrutura do repeater</p>
 	</td>
 	<td>
-		<?php
-		
-		do_action('acf/create_field', array(
-			'type'		=>	'radio',
-			'name'		=>	'fields['.$key.'][preview_size]',
-			'value'		=>	$field['preview_size'],
-			'layout'	=>	'horizontal',
-			'choices'	=>	array(
-				'thumbnail' => __('Thumbnail', 'acf-json-field'),
-				'something_else' => __('Something Else', 'acf-json-field'),
-			)
-		));
-		
-		?>
+        <json-field-options
+                field_name="<?php echo esc_attr("fields[$key][subfields]") ?>"
+                field_value="<?php echo esc_attr($subfields) ?>">
+        </json-field-options>
 	</td>
 </tr>
 		<?php
@@ -120,12 +118,19 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 		*/
 		
 		// perhaps use $field['preview_size'] to alter the markup?
-		
+        $value = (array_key_exists('value', $field) && $field['value'] && '' !== $field['value'])
+            ? $field['value'] : '[]';
+        $subfields = (array_key_exists('subfields', $field) && '' !== $field['subfields'])
+            ? $field['subfields'] : '[]';
 		
 		// create Field HTML
 		?>
-		<div>
-			
+		<div id="<?php echo $field['key'] ?>" class="json-field-wrapper">
+            <json-field
+                    field_name="<?php echo esc_attr($field['name']) ?>"
+                    field_value="<?php echo esc_attr($value) ?>"
+                    field_structure="<?php echo esc_attr($subfields) ?>">
+            </json-field>
 		</div>
 		<?php
 	}
@@ -154,13 +159,8 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 		
 		
 		// register & include JS
-		wp_register_script('acf-json-field', "{$url}assets/js/input.js", array('acf-input'), $version);
+		wp_register_script('acf-json-field', "{$url}dist/build.js", array('acf-input'), $version);
 		wp_enqueue_script('acf-json-field');
-		
-		
-		// register & include CSS
-		wp_register_style('acf-json-field', "{$url}assets/css/input.css", array('acf-input'), $version);
-		wp_enqueue_style('acf-json-field');
 		
 	}
 	
