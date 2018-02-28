@@ -21,7 +21,7 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
             'empty_field' => '',
             'empty_field_2' => '[]',
             'acf_value_field' => '[{"test-1":"test 1"},{"test-1":"test 2"},{"test-1":"test 3"}]',
-            'acf_option_field' => '[{"label":"teste 1","slug":"valor 1"},{"label":"teste 2","slug":"valor 2"}]',
+            'acf_option_field' => '[{"label":"test 1","slug":"test-1"},{"label":"test 2","slug":"test-2"}]',
         ]));
     }
 
@@ -43,7 +43,7 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Testa se o método JsonField::getField retorna apenas arrays.
-     * @dataProvider providerFieldNames
+     * @dataProvider providerFieldValues
      */
     public function testJsonFieldGetsContent($fieldName, $_)
     {
@@ -53,26 +53,54 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Testa se o método JsonField::getField retorna os dados corretamente.
-     * @dataProvider providerFieldNames
+     * @dataProvider providerFieldValues
      */
-    public function testJsonFieldContentNumber($fieldName, $itemsCount)
+    public function testJsonFieldContentNumber($fieldName, $values)
     {
         $content = $this->jsonField->getField($fieldName);
-        $this->assertEquals($itemsCount, count($content));
+        $this->assertEquals(count($values), count($content));
     }
 
     /**
-     * Adiciona os nomes dos campos à serem checkados (e o número de subcampos).
-     * @return array
+     * Testa o método JsonField::getField retorna o array corretamente.
+     * @dataProvider providerFieldValues
      */
-    public function providerFieldNames()
+    public function testJsonFieldValues($fieldName, $values)
+    {
+        $content = $this->jsonField->getField($fieldName);
+        $this->assertEquals($values, $content);
+    }
+
+    /*
+     * Valores esperados nos testes dos campos mockados.
+     */
+    public function providerFieldValues()
     {
         return [
-            ['non_existent_field', 0],
-            ['empty_field', 0],
-            ['empty_field_2', 0],
-            ['acf_value_field', 3],
-            ['acf_option_field', 2],
+            ['non_existent_field', []],
+            ['empty_field', []],
+            ['empty_field_2', []],
+            [
+                'acf_value_field',
+                [
+                    ['test-1' => 'test 1'],
+                    ['test-1' => 'test 2'],
+                    ['test-1' => 'test 3'],
+                ],
+            ],
+            [
+                'acf_option_field',
+                [
+                    [
+                        'label' => 'test 1',
+                        'slug' => 'test-1',
+                    ],
+                    [
+                        'label' => 'test 2',
+                        'slug' => 'test-2',
+                    ],
+                ],
+            ],
         ];
     }
 }
