@@ -20,8 +20,8 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
         $this->jsonField = new JsonField(new FieldMock([
             'empty_field' => '',
             'empty_field_2' => '[]',
-            'two_registers_field' => '[{"title":"teste 1","value":"valor 1"},{"title":"teste 2","value":"valor 2"}]',
-            'three_registers_field' => '[{"title":"teste 1","value":"valor 1"},{"title":"teste 2","value":"valor 2"},{"title":"teste 3","value":"valor 3"}]',
+            'acf_value_field' => '[{"test-1":"test 1"},{"test-1":"test 2"},{"test-1":"test 3"}]',
+            'acf_option_field' => '[{"label":"teste 1","slug":"valor 1"},{"label":"teste 2","slug":"valor 2"}]',
         ]));
     }
 
@@ -71,8 +71,8 @@ class JsonFieldTest extends \PHPUnit\Framework\TestCase
             ['non_existent_field', 0],
             ['empty_field', 0],
             ['empty_field_2', 0],
-            ['two_registers_field', 2],
-            ['three_registers_field', 3],
+            ['acf_value_field', 3],
+            ['acf_option_field', 2],
         ];
     }
 }
