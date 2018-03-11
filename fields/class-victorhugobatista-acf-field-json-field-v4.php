@@ -78,7 +78,17 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 		$key = $field['name'];
 		$subfields = (array_key_exists('subfields', $field) && '' !== $field['subfields'])
             ? $field['subfields'] : '[]';
-		
+        $structure = [
+            [
+                'label' => 'Label do campo',
+                'slug' => 'label',
+            ],
+            [
+                'label' => 'Slug do campo',
+                'slug' => 'slug',
+            ],
+        ];
+
 		// Create Field Options HTML
 		?>
 <tr class="field-json-option field_option field_option_<?php echo $this->name; ?>">
@@ -90,7 +100,7 @@ class victorhugobatista_acf_field_json_field extends acf_field {
         <json-field
                 field_name="<?php echo esc_attr("fields[$key][subfields]") ?>"
                 field_value="<?php echo esc_attr($subfields) ?>"
-                field_structure="<?php echo esc_attr('[{"label":"Label do campo","slug":"label"},{"label":"Slug do campo","slug":"slug"}]') ?>">
+                field_structure="<?php echo esc_attr(json_encode($structure)) ?>">
         </json-field>
 	</td>
 </tr>
