@@ -87,10 +87,11 @@ class victorhugobatista_acf_field_json_field extends acf_field {
 		<p class="description">Estrutura do repeater</p>
 	</td>
 	<td>
-        <json-field-options
+        <json-field
                 field_name="<?php echo esc_attr("fields[$key][subfields]") ?>"
-                field_value="<?php echo esc_attr($subfields) ?>">
-        </json-field-options>
+                field_value="<?php echo esc_attr($subfields) ?>"
+                field_structure="<?php echo esc_attr('[{"label":"Label do campo","slug":"label"},{"label":"Slug do campo","slug":"slug"}]') ?>">
+        </json-field>
 	</td>
 </tr>
 		<?php
@@ -122,7 +123,7 @@ class victorhugobatista_acf_field_json_field extends acf_field {
             ? $field['value'] : '[]';
         $subfields = (array_key_exists('subfields', $field) && '' !== $field['subfields'])
             ? $field['subfields'] : '[]';
-		
+
 		// create Field HTML
 		?>
 		<div id="<?php echo $field['key'] ?>" class="json-field-wrapper">
