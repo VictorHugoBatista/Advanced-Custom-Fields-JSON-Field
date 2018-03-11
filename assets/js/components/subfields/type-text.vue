@@ -13,7 +13,7 @@
 
 <script>
     export default {
-        name: "subfield-text",
+        name: "type-text",
         props: [
             'label',
             'slug',

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import subfieldText from './subfield-text';
+    import subfieldText from './subfields/type-text';
     export default {
         name: "json-field",
         components: {
