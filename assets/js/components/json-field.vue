@@ -4,10 +4,10 @@
         <ul class="json-field-repeater">
             <li class="json-field-repeater-item" v-for="field, key in field_data">
                 <div class="json-field-repeater-item-form-group" v-for="subfield in structure">
-                    <subfield-text
+                    <component v-bind:is="'subfield-text'"
                         :label="subfield.label" :slug="subfield.slug" :value="field[subfield.slug]"
                         v-on:subfield-changed="updateFieldValue(key, subfield.slug, $event.subfieldValue)">
-                    </subfield-text>
+                    </component>
                 </div>
                 <div class="json-field-repeater-item-form-group">
                     <input type="button" value="Remover"
