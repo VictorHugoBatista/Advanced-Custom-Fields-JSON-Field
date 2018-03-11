@@ -4,14 +4,7 @@
         <ul class="json-field-repeater">
             <li class="json-field-repeater-item" v-for="field, key in field_data">
                 <div class="json-field-repeater-item-form-group" v-for="subfield in structure">
-                    <div class="json-field-repeater-item-label">
-                        {{ subfield.label }} ({{ subfield.slug }})
-                    </div>
-                    <input type="text"
-                           class="json-field-repeater-item-field"
-                           :value="field[subfield.slug]"
-                           v-on:input="updateFieldValue(key, subfield.slug, $event.target.value)"
-                    />
+                    <subfield-text :label="subfield.label" :value="field[subfield.slug]"></subfield-text>
                 </div>
                 <div class="json-field-repeater-item-form-group">
                     <input type="button" value="Remover"
@@ -26,8 +19,12 @@
 </template>
 
 <script>
+    import subfieldText from './subfield-text';
     export default {
         name: "json-field",
+        components: {
+            'subfield-text': subfieldText,
+        },
         props: [
             'field_name',
             'field_value',
@@ -72,7 +69,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .json-field-repeater-options,
     .json-field-repeater-item,
     .json-field-repeater-item-field,
