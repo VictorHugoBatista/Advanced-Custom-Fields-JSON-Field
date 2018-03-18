@@ -82,10 +82,21 @@ class victorhugobatista_acf_field_json_field extends acf_field {
             [
                 'label' => 'Label do campo',
                 'slug' => 'label',
+                'type' => 'text',
             ],
             [
                 'label' => 'Slug do campo',
                 'slug' => 'slug',
+                'type' => 'text',
+            ],
+            [
+                'label' => 'Tipo do campo',
+                'slug' => 'type',
+                'type' => 'select',
+                'choices' => [
+                    'text' => 'Texto',
+                    'select' => 'Select',
+                ],
             ],
         ];
 
