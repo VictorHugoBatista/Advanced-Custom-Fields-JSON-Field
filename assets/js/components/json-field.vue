@@ -24,11 +24,13 @@
 
 <script>
     import subfieldText from './subfields/type-text';
+    import subfieldTextarea from './subfields/type-textarea';
     import subfieldSelect from './subfields/type-select';
     export default {
         name: "json-field",
         components: {
             'subfield-text': subfieldText,
+            'subfield-textarea': subfieldTextarea,
             'subfield-select': subfieldSelect,
         },
         props: [

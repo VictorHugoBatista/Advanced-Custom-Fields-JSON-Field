@@ -95,6 +95,7 @@ class victorhugobatista_acf_field_json_field extends acf_field {
                 'type' => 'select',
                 'choices' => [
                     'text' => 'Texto',
+                    'textarea' => 'Textarea',
                     'select' => 'Select',
                 ],
             ],
