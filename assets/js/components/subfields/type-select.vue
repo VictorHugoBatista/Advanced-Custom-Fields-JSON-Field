@@ -3,12 +3,13 @@
         <div class="json-field-repeater-item-label">
             {{ label }} ({{ slug }})
         </div>
-        <select class="json-field-repeater-item-field" id="">
-            <option v-for="label, choiceValue in choices" :value="choiceValue">
+        <select class="json-field-repeater-item-field"
+                v-on:change="$emit('subfield-changed', {subfieldValue: $event.target.value})"
+        >
+            <option v-for="label, choiceValue in choices" :value="choiceValue" :selected="value === choiceValue">
                 {{ label }}
             </option>
         </select>
-        <!--v-on:input="$emit('subfield-changed', {subfieldValue: $event.target.value})"-->
     </div>
 </template>
 
